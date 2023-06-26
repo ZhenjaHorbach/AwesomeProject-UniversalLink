@@ -34,7 +34,7 @@
   BRZConfiguration *configuration = [[BRZConfiguration alloc] initWithApiKey:@""
                                                                     endpoint:@"sdk.fra-01.braze.eu"];
   // - Enable logging and customize the configuration here
-  configuration.logger.level = BRZLoggerLevelInfo;
+  configuration.logger.level = BRZLoggerLevelDebug;
   Braze *braze = [BrazeReactBridge initBraze:configuration];
   AppDelegate.braze = braze;
 
@@ -55,6 +55,11 @@ static Braze *_braze = nil;
   _braze = braze;
 }
 
+- (BOOL)braze:(Braze *)braze shouldOpenURL:(BRZURLContext *)context {
+  NSLog(@"%@", [NSString stringWithFormat:@"%@/%@", @"braze:shouldOpenURL:", [context.url.host lowercaseString]]);
+  // Let Braze handle links otherwise
+  return YES;
+}
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {

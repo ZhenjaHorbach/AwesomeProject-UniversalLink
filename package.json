@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@braze/react-native-sdk": "^5.0.0",
+    "@braze/react-native-sdk": "^5.1.0",
     "react": "18.2.0",
     "react-native": "0.71.8"
   },
